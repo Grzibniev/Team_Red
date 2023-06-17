@@ -36,7 +36,18 @@ public class Health : MonoBehaviour
             if (!dead)
             {
                 anim.SetTrigger("die");
+
+                //player
+                if(GetComponent<PlayerMovement>() !=null)
                 GetComponent<PlayerMovement>().enabled = false;
+
+                //enemy
+                if (GetComponentInParent<EnemyPatrol>() != null)
+                    GetComponentInParent<EnemyPatrol>().enabled = false;
+
+                if (GetComponent<MeleeEnemy>() != null)
+                    GetComponent<MeleeEnemy>().enabled = false;
+
                 dead = true;
             }
         }
@@ -57,5 +68,10 @@ public class Health : MonoBehaviour
 
         }
         Physics2D.IgnoreLayerCollision(6, 9, false);
+    }
+
+    private void Deactivate()
+    {
+        gameObject.SetActive(false);
     }
 }

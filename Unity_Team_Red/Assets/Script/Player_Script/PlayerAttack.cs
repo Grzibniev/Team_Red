@@ -27,7 +27,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void Attack()
     {
-        animator.SetTrigger("attack");
+       
         cooldownTimer = 0;
 
         bullets[FindBullet()].transform.position = firePoint.position;
