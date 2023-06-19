@@ -15,6 +15,12 @@ public class Health : MonoBehaviour
     [SerializeField] private int numberOfFlashes;
     private SpriteRenderer spriteRend;
 
+    [Header("Death Sound")]
+    [SerializeField] private AudioClip deathSound;
+
+    [Header("Hurt Sound")]
+    [SerializeField] private AudioClip hurtSound;
+
     private void Awake()
     {
         currentHealth = startingHealth;
@@ -30,6 +36,7 @@ public class Health : MonoBehaviour
         {       
             anim.SetTrigger("hurt");
             StartCoroutine(Invunerability());
+            SoundManager.instance.PlaySound(hurtSound);
         }
         else
         {
@@ -49,12 +56,26 @@ public class Health : MonoBehaviour
                     GetComponent<MeleeEnemy>().enabled = false;
 
                 dead = true;
+
+                SoundManager.instance.PlaySound(deathSound);
             }
         }
     }
     public void addHealth(float _value)
     {
         currentHealth = Mathf.Clamp(currentHealth + _value, 0, startingHealth);
+    }
+
+    public void Respawn()
+    {
+        dead = false;
+        addHealth(startingHealth);
+        anim.ResetTrigger("die");
+        anim.Play("Player_idle");
+        StartCoroutine(Invunerability());
+
+        if (GetComponent<PlayerMovement>() != null)
+            GetComponent<PlayerMovement>().enabled = true;
     }
     private IEnumerator Invunerability()
     {
@@ -74,4 +95,6 @@ public class Health : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
+
+   
 }

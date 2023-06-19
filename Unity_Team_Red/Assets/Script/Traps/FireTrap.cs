@@ -11,6 +11,9 @@ public class FireTrap : MonoBehaviour
     private Animator anim;
     private SpriteRenderer spriteRend;
 
+    [Header("SFX")]
+    [SerializeField] private AudioClip trapSound;
+
     private bool triggered;
     private bool active;
 
@@ -39,6 +42,7 @@ public class FireTrap : MonoBehaviour
 
             //czeka na opóznienie, aktywuje pu³apke,aktywuje animacje,zmienia kolor na podstawowy 
             yield return new WaitForSeconds(activationDelay);
+            SoundManager.instance.PlaySound(trapSound);
             spriteRend.color = Color.white;
             active = true;
             anim.SetBool("activated", true);

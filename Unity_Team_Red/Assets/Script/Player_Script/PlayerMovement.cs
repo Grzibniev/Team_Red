@@ -26,6 +26,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Transform wallCheck;
     [SerializeField] private LayerMask wallLayer;
+    [Header("SFX")]
+    [SerializeField] private AudioClip jumpSound;
 
     private void Update()
     {
@@ -43,6 +45,8 @@ public class PlayerMovement : MonoBehaviour
         {
             if (IsGrounded() || doubleJump)
             {
+                SoundManager.instance.PlaySound(jumpSound);
+
                 rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
 
                 doubleJump = !doubleJump;
