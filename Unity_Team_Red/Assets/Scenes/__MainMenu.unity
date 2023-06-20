@@ -1285,7 +1285,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'VOLUME
+  m_text: 'MUSIC
 
 '
   m_isRightToLeft: 0

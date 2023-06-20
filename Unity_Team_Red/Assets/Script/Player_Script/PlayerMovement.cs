@@ -2,6 +2,12 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] private DialogueUI dialogueUI;
+
+    public DialogueUI DialogueUI => dialogueUI;
+
+    public IInteractable interactable { get; set; }
+
     private float horizontal;
     private float speed = 8f;
     private float jumpingPower = 16f;
@@ -31,6 +37,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if (dialogueUI.isOpen) return;
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (interactable != null)
+            {
+                interactable.Interact(this);
+            }
+        }
+
         horizontal = Input.GetAxisRaw("Horizontal");
 
         animator.SetFloat("Speed", Mathf.Abs(horizontal));
