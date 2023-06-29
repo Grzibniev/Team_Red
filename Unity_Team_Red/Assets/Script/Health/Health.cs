@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
@@ -55,7 +56,17 @@ public class Health : MonoBehaviour
                 if (GetComponent<MeleeEnemy>() != null)
                     GetComponent<MeleeEnemy>().enabled = false;
 
+                if (GetComponent<BossMeleeEnemy>() != null)
+                    GetComponent<BossMeleeEnemy>().enabled = false;
+               
+            
+
                 dead = true;
+
+                if (GetComponent<BossMeleeEnemy>() == dead)
+                {
+                    SceneManager.LoadScene(4);
+                }
 
                 SoundManager.instance.PlaySound(deathSound);
             }
