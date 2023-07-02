@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: intercom1
   m_EditorClassIdentifier: 
   dialogue:
-  - "Witamy na szkoleniu!\nTutaj nauczymy ciebie podstaw przetrwania,\nAby zobaczy\u0107
+  - "Witamy na szkoleniu!\nTutaj nauczymy ciebie podstaw przetrwania\nAby zobaczy\u0107
     nast\u0119pn\u0105 wiadomo\u015B\u0107 kliknij \"Spacja\""
   - "Poruszanie wygl\u0105da w nast\u0119puj\u0105cy spos\xF3b\nW - Skok(przytrzymanie
     W pozwoli na dalszy skok a podw\xF3jne klikni\u0119cie pozwoli na podw\xF3jny
